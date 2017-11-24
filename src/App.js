@@ -20,6 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <a class="waves-effect waves-light btn">Stuff</a>
         <SearchComponent/>
       </div>
     );
