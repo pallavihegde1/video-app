@@ -13,8 +13,12 @@ class App extends Component {
     super(props);
 
     this.state = {videos: [], selected_video: null};
+    this.videoSearch('surfboards');
     // yt search api
-    YTSearch({key: API_KEY, term: 'bigboss'}, (videos) => {
+  }
+
+  videoSearch = (term) => {
+    YTSearch({key: API_KEY, term: term}, (videos) => {
        this.setState({videos: videos, selected_video: videos[0]})
     });
   }
@@ -23,7 +27,7 @@ class App extends Component {
     return (
       <div className="App">
         <a className="waves-effect waves-light btn">Stuff</a>
-        <SearchComponent/>
+        <SearchComponent OnSearchChange={(term) => this.videoSearch(term)}/>
         <VideoDetail video={this.state.selected_video }/>
         <VideoList videos={this.state.videos} onVideoSelect={(selectedVideo) => this.setState({selected_video: selectedVideo})}/>
       </div>
