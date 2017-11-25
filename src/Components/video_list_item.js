@@ -7,7 +7,7 @@ class VideoListItem extends Component {
     console.log(Title);
     console.log(this.props)
     return(
-      <div className="row">
+      <div className="row" onClick={()=> this.props.onVideoSelect(this.props.video) }>
         <div className="col s12 m6">
           <div className="card">
             <div className="card-image">

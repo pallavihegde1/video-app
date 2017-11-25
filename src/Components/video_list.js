@@ -4,7 +4,7 @@ import VideoListItem from './video_list_item'
 class VideoList extends Component {
   render(){
      const VideoList = this.props.videos.map((video,index) => (
-       <li  key={index}> <VideoListItem video={video}/> </li>
+       <li  key={index}> <VideoListItem video={video} onVideoSelect={this.props.onVideoSelect}/> </li>
     ))
     return(
       <div>
