@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -24,10 +25,12 @@ class App extends Component {
   }
 
   render() {
+    //debouce takes in a function and returns a new function that is called once every 300 milliseconds in this case
+    const videoSearchConst = _.debounce((term) => {this.videoSearch(term)}, 300)
     return (
       <div className="App">
         <a className="waves-effect waves-light btn">Stuff</a>
-        <SearchComponent OnSearchChange={(term) => this.videoSearch(term)}/>
+        <SearchComponent OnSearchChange={videoSearchConst}/>
         <VideoDetail video={this.state.selected_video }/>
         <VideoList videos={this.state.videos} onVideoSelect={(selectedVideo) => this.setState({selected_video: selectedVideo})}/>
       </div>
